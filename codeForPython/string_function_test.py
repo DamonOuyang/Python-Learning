@@ -75,18 +75,20 @@ with open("test.txt", "rt") as in_file:
 print(text)
 
 '''
-
+'''
 #!/usr/bin/python3
 
 import json
 
 # Python 字典类型转换为 JSON 对象
 '''
+'''
 data = {
     'no' : 1,
     'name' : 'W3CSchool',
     'url' : 'http://www.w3cschool.cn'
 }
+'''
 '''
 
 data = {
@@ -100,6 +102,52 @@ python_str = json.loads(json_str)
 print ("Python 原始数据repr：", repr(data))
 print ("JSON 对象          ：", json_str)
 print ("Python 原始数据    ：", python_str)
+'''
+'''
+myset={1,2,3,4,5,6}
+myset.add(8)
+myset.add(1)
+print(myset)
+print("---------")
+myset=set("abcdefg")
+myset.update("abcdxyz")#update 打碎字符串，插入，多个打碎后插入
+print(myset)
+
+myset={1,2,3,4,5,6}
+myset.update([1,2,8,9])
+print(myset)
+myset.remove(5)
+print(myset)
+
+myset = {1,2,3,4,5,6}
+for i in myset:
+    print(i)
+print(myset[0])
+for idx,iddata in  enumerate(myset):
+    print(idx,iddata)
+'''
+
+#!/usr/bin/python3
+
+import pymysql
+
+# 打开数据库连接
+db = pymysql.connect("localhost","testuser","test123","TESTDB" )
+
+# 使用 cursor() 方法创建一个游标对象 cursor
+cursor = db.cursor()
+
+# 使用 execute()  方法执行 SQL 查询
+cursor.execute("SELECT VERSION()")
+
+# 使用 fetchone() 方法获取单条数据.
+data = cursor.fetchone()
+
+print ("Database version : %s " % data)
+
+# 关闭数据库连接
+db.close()
+
 
 
 
