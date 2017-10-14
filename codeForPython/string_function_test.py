@@ -126,6 +126,7 @@ print(myset[0])
 for idx,iddata in  enumerate(myset):
     print(idx,iddata)
 '''
+'''
 
 #!/usr/bin/python3
 
@@ -147,6 +148,102 @@ print ("Database version : %s " % data)
 
 # 关闭数据库连接
 db.close()
+'''
+'''
+mystack=[]
+mystack.append(1)
+print(mystack)
+mystack.append(2)
+print(mystack)
+mystack.append(3)
+print(mystack)
+mystack.append(4)
+print(mystack)
+print(mystack.pop())
+print(mystack)
+print(mystack.pop())
+print(mystack)
+print(mystack.pop())
+print(mystack)
+'''
+'''
+import collections
+queue=collections.deque([1,2,3,4,5])
+print(queue)
+queue.append(6)
+print(queue)
+queue.append(7)
+print(queue)
+print(queue.popleft())#获取要弹出的值，然后弹出,弹出左边的值
+print(queue)
+print(queue.pop()) #获取要弹出的值，然后弹出,弹出右边的值
+print(queue)
+'''
+'''
+from collections import deque # 数据结构集合
+queue=deque([1,2,3,4,5])
+print(queue)
+queue.append(6)
+print(queue)
+queue.append(7)
+print(queue)
+print(queue.popleft())
+print(queue)
+'''
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
