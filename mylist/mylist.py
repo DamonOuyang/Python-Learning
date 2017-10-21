@@ -27,6 +27,7 @@ for l in mylist:
     print(type(l))
     print(l)
 '''
+'''
 import codecs
 filepath=r"E:\Python Learning\大数据相关数据\1.txt"
 file=codecs.open(filepath,"rb","gbk","ignore")#按照指定编码
@@ -43,7 +44,63 @@ for line in  mylist:
 
 file.close()
 filegood.close()
+'''
+'''
+import itertools
+mylist=list(itertools.permutations(['A','B','C','D'],4)) # 排列
+print(mylist)
+print(len(mylist))
 
+itertools.permutations([1,2,3,4],2)#排列，4个数的列表，取出3个数，不同的顺序算
+print(type(mylist))
+print(id(mylist))
+'''
+'''
+import itertools
+mylist=list(itertools.combinations(['A','B','C','D'],3))
+print(mylist)
+print(len(mylist))
+'''
+
+import itertools
+mylist=["".join(x) for x in itertools.product("0123456789abcdefghijklmn",repeat=6)]
+print(mylist)
+print(len(mylist))
+file=open("6pass.txt","wb")#生产数字密码
+for i in mylist:
+    file.write((i+"\r\n").encode("utf-8"))
+file.close()
+
+'''
+import itertools
+mylist=("".join(x) for x in itertools.product("0123456abc",repeat=2) )
+print(mylist)# next(mylist) 生成一个破解一个 中括号为列表list,()小括号生成器
+print(next(mylist))
+print(next(mylist))
+print(next(mylist))
+print(next(mylist))
+'''
+
+class money:
+    pass
+
+class Hello:
+    a = 0
+    b = 100
+    _name=""
+    _unm=""
+    def __init__(self,num,name):
+        self._unm = num
+        self._name = name
+    def 存款(self,num):
+        self._unm+=num
+        print(self._unm)
+    def 取款(self,num):
+        self._unm-=num
+        print(self._unm)
+
+Hello.存款(10)
+Hello.取款(100)
 
 
 
