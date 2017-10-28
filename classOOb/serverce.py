@@ -1,3 +1,4 @@
+'''
 #!/usr/bin/python3
 # 文件名：server.py
 
@@ -27,3 +28,26 @@ while True:
     msg = '欢迎访问W3Cschool教程！' + "\r\n"
     clientsocket.send(msg.encode('utf-8'))
     clientsocket.close()
+
+'''
+'''
+import socket
+import time
+s=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
+s.setsockopt(socket.SOL_SOCKET,socket.SO_REUSEADDR,1)
+s.bind(('192.168.10.90',9999))
+s.listen(5)
+while 1:
+    try:
+        clientsock,clientaddr=s.accept()
+    except Exception as err:
+        print(err)
+    while 1:
+        data=clientsock.recv(1024)
+        time.sleep(1)
+        if not data:
+            break
+        clientsock.send(("hello,it's my computer").encode())
+        print('client address:'+str(clientaddr))
+        clientsock.close()
+'''
