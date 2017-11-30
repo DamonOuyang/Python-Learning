@@ -55,7 +55,6 @@ class AccessToken(object):
             raise tornado.gen.Return(cls._access_token)
 
 
-
 class WechatHandler(RequestHandler):
     """对接微信服务器"""
     def prepare(self):
