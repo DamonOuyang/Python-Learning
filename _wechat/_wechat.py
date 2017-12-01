@@ -15,10 +15,15 @@ from tornado.web import RequestHandler
 from tornado.options import options, define
 from tornado.httpclient import AsyncHTTPClient, HTTPRequest
 
+# 测试号
+# WECHAT_TOKEN = "damon"
+# WECHAT_APP_ID = "wx8cf20b7f73705559"
+# WECHAT_APP_SECRET = "174ce3922b489a2ed68faf889ddb276e"
+
 
 WECHAT_TOKEN = "damon"
-WECHAT_APP_ID = "wx8cf20b7f73705559"
-WECHAT_APP_SECRET = "174ce3922b489a2ed68faf889ddb276e"
+WECHAT_APP_ID = "wx59e4657b59d640f6"
+WECHAT_APP_SECRET = "fd677ca5c4d61482bae31bd0f8824fd4"
 
 define("port", default=80, type=int, help="")
 
@@ -239,7 +244,7 @@ def main():
            # (r"/wechat8000", WechatHandler),
             (r"/root", WechatHandler),
             (r"/qrcode", QrcodeHandler),
-            (r"/wechat8000/profile", ProfileHandler),
+            (r"/root/profile", ProfileHandler),
             (r"/menu", MenuHandler),
         ],
         template_path=os.path.join(os.path.dirname(__file__), "template")
