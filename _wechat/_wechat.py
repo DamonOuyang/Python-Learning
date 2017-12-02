@@ -99,6 +99,109 @@ class WechatHandler(RequestHandler):
                     "CreateTime": int(time.time()),
                     "MsgType": "text",
                     "Content": content,
+                    #"Content": "收到的是u文字图片",
+                }
+            }
+            self.write(xmltodict.unparse(resp_data))
+        elif msg_type == 'image':
+            PicUrl = dict_data["xml"]["PicUrl"]
+            MediaId= dict_data["xml"]["MediaId"]
+            """
+<xml>
+ <ToUserName><![CDATA[toUser]]></ToUserName>
+ <FromUserName><![CDATA[fromUser]]></FromUserName>
+ <CreateTime>1348831860</CreateTime>
+ <MsgType><![CDATA[image]]></MsgType>
+ <PicUrl><![CDATA[this is a url]]></PicUrl>
+ <MediaId><![CDATA[media_id]]></MediaId>
+ <MsgId>1234567890123456</MsgId>
+ </xml>
+"""
+            resp_data = {
+                "xml": {
+                    "ToUserName": dict_data["xml"]["FromUserName"],
+                    "FromUserName": dict_data["xml"]["ToUserName"],
+                    "CreateTime": int(time.time()),
+                    "MsgType": "image",
+                    "PicUrl": "http://image.baidu.com/search/detail?ct=503316480&z=0&ipn=d&word=%E5%9B%BE%E7%89%87&step_word=&hs=0&pn=1&spn=0&di=53170758850&pi=0&rn=1&tn=baiduimagedetail&is=0%2C0&istype=0&ie=utf-8&oe=utf-8&in=&cl=2&lm=-1&st=undefined&cs=49366202%2C632101467&os=3303681949%2C3335890514&simid=3365052636%2C338127663&adpicid=0&lpn=0&ln=1942&fr=&fmq=1512195470962_R&fm=&ic=undefined&s=undefined&se=&sme=&tab=0&width=undefined&height=undefined&face=undefined&ist=&jit=&cg=&bdtype=0&oriquery=&objurl=http%3A%2F%2Fpic4.nipic.com%2F20091217%2F3885730_124701000519_2.jpg&fromurl=ippr_z2C%24qAzdH3FAzdH3Fooo_z%26e3Bgtrtv_z%26e3Bv54AzdH3Ffi5oAzdH3FnAzdH3F8alAzdH3Fnlwnldjwlwuw8j0k_z%26e3Bip4s&gsm=0&rpstart=0&rpnum=0",
+                    "MediaId": MediaId,
+                }
+            }
+            self.write(xmltodict.unparse(resp_data))
+        elif msg_type == 'voice':
+            MediaId = dict_data["xml"]["MediaId"]
+            Format = dict_data["xml"]["Format"]
+            '''
+<xml>
+<ToUserName><![CDATA[toUser]]></ToUserName>
+<FromUserName><![CDATA[fromUser]]></FromUserName>
+<CreateTime>1357290913</CreateTime>
+<MsgType><![CDATA[voice]]></MsgType>
+<MediaId><![CDATA[media_id]]></MediaId>
+<Format><![CDATA[Format]]></Format>
+<MsgId>1234567890123456</MsgId>
+</xml>
+            '''
+            resp_data = {
+                "xml": {
+                    "ToUserName": dict_data["xml"]["FromUserName"],
+                    "FromUserName": dict_data["xml"]["ToUserName"],
+                    "CreateTime": int(time.time()),
+                    "MsgType": "image",
+                    "MediaId": MediaId,
+                    "Format" : Format,
+                }
+            }
+            self.write(xmltodict.unparse(resp_data))
+        elif msg_type == 'video':
+            MediaId = dict_data["xml"]["MediaId"]
+            ThumbMediaId = dict_data["xml"]["ThumbMediaId"]
+            '''
+<xml>
+<ToUserName><![CDATA[toUser]]></ToUserName>
+<FromUserName><![CDATA[fromUser]]></FromUserName>
+<CreateTime>1357290913</CreateTime>
+<MsgType><![CDATA[video]]></MsgType>
+<MediaId><![CDATA[media_id]]></MediaId>
+<ThumbMediaId><![CDATA[thumb_media_id]]></ThumbMediaId>
+<MsgId>1234567890123456</MsgId>
+</xml
+            '''
+            resp_data = {
+                "xml": {
+                    "ToUserName": dict_data["xml"]["FromUserName"],
+                    "FromUserName": dict_data["xml"]["ToUserName"],
+                    "CreateTime": int(time.time()),
+                    "MsgType": "image",
+                    "MediaId": MediaId,
+                    "ThumbMediaId": ThumbMediaId,
+                }
+            }
+            self.write(xmltodict.unparse(resp_data))
+        elif msg_type == 'location':
+            MediaId = dict_data["xml"]["MediaId"]
+            ThumbMediaId = dict_data["xml"]["ThumbMediaId"]
+            '''
+<xml>
+<ToUserName><![CDATA[toUser]]></ToUserName>
+<FromUserName><![CDATA[fromUser]]></FromUserName>
+<CreateTime>1351776360</CreateTime>
+<MsgType><![CDATA[location]]></MsgType>
+<Location_X>23.134521</Location_X>
+<Location_Y>113.358803</Location_Y>
+<Scale>20</Scale>
+<Label><![CDATA[位置信息]]></Label>
+<MsgId>1234567890123456</MsgId>
+</xml>
+            '''
+            resp_data = {
+                "xml": {
+                    "ToUserName": dict_data["xml"]["FromUserName"],
+                    "FromUserName": dict_data["xml"]["ToUserName"],
+                    "CreateTime": int(time.time()),
+                    "MsgType": "image",
+                    "MediaId": MediaId,
+                    "ThumbMediaId": ThumbMediaId,
                 }
             }
             self.write(xmltodict.unparse(resp_data))
@@ -131,7 +234,6 @@ class WechatHandler(RequestHandler):
                    }
                }
                self.write(xmltodict.unparse(resp_data))
-
         else:
             resp_data = {
                 "xml": {
@@ -220,7 +322,7 @@ class MenuHandler(RequestHandler):
                     {
                         "type": "view",
                         "name": "我的主页",
-                        "url": "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx36766f74dbfeef15&redirect_uri=http%3A//www.idehai.com/wechat8000/profile&response_type=code&scope=snsapi_userinfo&state=1&connect_redirect=1#wechat_redirect"
+                        "url": "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx36766f74dbfeef15&redirect_uri=http%3A//www.idehai.com/root/profile&response_type=code&scope=snsapi_userinfo&state=1&connect_redirect=1#wechat_redirect"
                     }
                 ]
             }
@@ -241,9 +343,8 @@ def main():
     tornado.options.parse_command_line()
     app = tornado.web.Application(
         [
-           # (r"/wechat8000", WechatHandler),
             (r"/root", WechatHandler),
-            (r"/qrcode", QrcodeHandler),
+            (r"/root/qrcode", QrcodeHandler),
             (r"/root/profile", ProfileHandler),
             (r"/menu", MenuHandler),
         ],
@@ -255,5 +356,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
